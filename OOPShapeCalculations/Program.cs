@@ -264,7 +264,7 @@ namespace OOPShapeCalculations
             //Method for calculating the perimeter of the triangle
             public void CalulatePerimeter()
             {
-                _eqTriPerimeter = Math.Round((_eqTriBase +  ((Math.Sqrt(Math.Pow(_eqTriBase, 2) + (Math.Pow(_eqTriHeight, 2) ) ) ) *2) ), 2);
+                _eqTriPerimeter = Math.Round((_eqTriBase +  ((Math.Sqrt(Math.Pow((_eqTriBase/2), 2) + (Math.Pow(_eqTriHeight, 2) ) ) ) *2) ), 2);
             }
 
             //Method for getting the value for the base of the triangle from the user
@@ -284,7 +284,7 @@ namespace OOPShapeCalculations
             //Method for outputing the values of the triangle
             public void OutputSize()
             {
-                Console.WriteLine($"The equilateral triangle has a base of {_eqTriBase}, a height of {_eqTriHeight}, an area of {_eqTriArea} and a perimeter of {_eqTriPerimeter}");
+                Console.WriteLine($"The triangle has a base of {_eqTriBase}, a height of {_eqTriHeight}, an area of {_eqTriArea} and a perimeter of {_eqTriPerimeter}");
                 Console.ReadLine();
             }
         }
