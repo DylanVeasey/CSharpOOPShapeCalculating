@@ -27,7 +27,7 @@ namespace OOPShapeCalculations
                 Console.WriteLine("Please enter what shape you would like to calculate");
                 Console.WriteLine("1)Circle");
                 Console.WriteLine("2)Rectangle");
-                Console.WriteLine("3)Triangle");
+                Console.WriteLine("3)Right-angled triangle");
                 _userInput = Int32.Parse(Console.ReadLine());
                 this.Decide();
             }
@@ -66,74 +66,58 @@ namespace OOPShapeCalculations
         }
         public class Rectangle
         {
-            //This is a private variable for the number of sides
-            private int _numberOfSides = 4;
-
-            //This is a private variable for area of the rectangle
+            //Declares private variables for each of the properties of a rectangle
             private int _rectArea;
-
-            //This is a private variable for the length of the reactangle
             private int _rectLength;
-
-            //This is a private variable for the width of the rectangle
             private int _rectWidth;
-
-            //This is a private variable for the perimeter of the rectangle
             private int _rectPerimeter;
 
-            //This is a public variable for the width of the rectangle
+            //Declares public variables for each of the properites of a rectangle
             public int RectWidth
             {
-                //allows you to get the private variable and return it to the outside world
                 get { return _rectWidth; }
             }
-
-            //This is a public variable for the length of the rectangle
             public int RectLength
             {
-                //allows you to get the private variable and return it to the outside world
                 get { return _rectLength; }
             }
-
-            //This is a public variable for the area of the rectangle
             public int RectArea
             {
-                //allows you to get the private variable and return it to the outside world
                 get { return _rectArea; }
 
             }
-
-            //This is a public variable for the perimeter of the rectangle
             public int RectPerimeter
             {
-                //allows you to get the private variable and return it to the outside world
                 get { return _rectPerimeter; }
             }
 
-            //This is a public function to calculate the area of the rectangle
+            //Method for calculating the area of a rectangle
             public void CalculateArea()
             {
                 _rectArea = _rectLength * _rectWidth;
             }
 
-            //This is a public function to calculate the perimeter of the rectangle
+            //Method for calculating the perimeter of a rectangle
             public void CalculatePerimeter()
             {
                 _rectPerimeter = (_rectLength * 2) + (_rectWidth * 2);
             }
 
+            //Method for getting the value of the width of a rectangle from the user
             public void SetWidth()
             {
                 Console.WriteLine("Please enter the width of the rectangle:");
                 _rectWidth = Int32.Parse(Console.ReadLine());
             }
 
+            //Method for getting the value of the length of a rectangle from the user
             public void SetLength()
             {
                 Console.WriteLine("Please enter the length of the rectangle:");
                 _rectLength = Int32.Parse(Console.ReadLine());
             }
 
+            //Method for outputing the values of the rectangle
             public void OutputSize()
             {
                 Console.WriteLine($"The rectangle has a width of {_rectWidth} and a length of {_rectLength}, an area of {_rectArea} and a perimeter of {_rectPerimeter}.");
@@ -143,55 +127,45 @@ namespace OOPShapeCalculations
         public class Circle
         {
 
-            //This is a private variable for area of the circle
+            //Declares private variables for each of the properties of a circle
             private double _circArea;
-
-            //This is a private variable for the length of the circle
             private double _circRadius;
-
-            //This is a private variable for the perimeter of the circle
             private double _circPerimeter;
 
-            //This is a public variable for the width of the circle
+            //Declares public variables for each of the properties of a circle
             public double circRadius
             {
-                //allows you to get the private variable and return it to the outside world
                 get { return _circRadius; }
             }
-
-            //This is a public variable for the area of the circle
             public double circArea
             {
-                //allows you to get the private variable and return it to the outside world
                 get { return _circArea; }
             }
-
-            //This is a public variable for the perimeter of the circle
             public double circPerimeter
             {
-                //allows you to get the private variable and return it to the outside world
                 get { return _circPerimeter; }
             }
 
-            //This is a public function to calculate the area of the circle
+            //Method for calculating the area of a circle
             public void CalculateArea()
             {
                 _circArea = Math.Round(Math.PI * Math.Pow(_circRadius, 2), 2);
             }
 
-            //This is a public function to calculate the perimeter of the circle
+            //Method for calculating the perimeter of a circle
             public void CalculatePerimeter()
             {
                 _circPerimeter = Math.Round(Math.PI * (_circRadius * 2), 2);
             }
 
-
+            //Method for getting the value of the radius of a circle from the user
             public void SetRadius()
             {
                 Console.WriteLine("Please enter the radius of the circle:");
                 _circRadius = Int32.Parse(Console.ReadLine());
             }
 
+            //Method for outputing the values of the circle
             public void OutputSize()
             {
                 Console.WriteLine($"The circle has a radius of {_circRadius}, an area of {_circArea} and a perimeter of {_circPerimeter}");
@@ -200,46 +174,51 @@ namespace OOPShapeCalculations
         }
         public class Triangle
         {
+            //Declares private variable for each property of the triangle
             private double _triArea;
-
             private double _triBase;
-
             private double _triHeight;
-
             private double _triPerimeter;
 
+
+            //Declares public variables for the area and perimeter of the triangle
             public double TriArea
             {
                 get { return _triArea; }
             }
-
             public double TriPerimeter
             {
                 get { return _triPerimeter; }
             }
 
+
+            //Method for calculating the area of the triangle
             public void CalculateArea()
             {
                 _triArea = Math.Round(((_triBase * _triHeight) / 2), 2);
             }
-
+        
+            //Method for calculating the perimeter of the triangle
             public void CalulatePerimeter()
             {
                 _triPerimeter = Math.Round((_triBase + _triHeight + (Math.Sqrt(Math.Pow(_triBase, 2) + (Math.Pow(_triHeight, 2))))), 2);
             }
 
+            //Method for getting the value for the base of the triangle from the user
             public void SetBase()
             {
                 Console.WriteLine("Please enter the base of the triangle");
                 _triBase = Int32.Parse(Console.ReadLine());
             }
 
+            //Method for getting the value for the height of the triangle from the user
             public void SetHeight()
             {
                 Console.WriteLine("Please enter the height of the triangle");
                 _triHeight = Int32.Parse(Console.ReadLine());
             }
 
+            //Method for outputing the values of the triangle
             public void OutputSize()
             {
                 Console.WriteLine($"The triangle has a base of {_triBase}, a height of {_triHeight}, an area of {_triArea} and a perimeter of {_triPerimeter}");
