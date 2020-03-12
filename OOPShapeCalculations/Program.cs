@@ -28,6 +28,7 @@ namespace OOPShapeCalculations
                 Console.WriteLine("1)Circle");
                 Console.WriteLine("2)Rectangle");
                 Console.WriteLine("3)Right-angled triangle");
+                Console.WriteLine("4)Equilateral or isosceles traingle");
                 _userInput = Int32.Parse(Console.ReadLine());
                 this.Decide();
             }
@@ -51,12 +52,21 @@ namespace OOPShapeCalculations
                 }
                 else if(_userInput == 3)
                 {
-                    Triangle tri1 = new Triangle();
-                    tri1.SetBase();
-                    tri1.SetHeight();
-                    tri1.CalculateArea();
-                    tri1.CalulatePerimeter();
-                    tri1.OutputSize();
+                    RATriangle ratri1 = new RATriangle();
+                    ratri1.SetBase();
+                    ratri1.SetHeight();
+                    ratri1.CalculateArea();
+                    ratri1.CalulatePerimeter();
+                    ratri1.OutputSize();
+                }
+                else if(_userInput == 4)
+                {
+                    EQTriangle eqtri1 = new EQTriangle();
+                    eqtri1.SetBase();
+                    eqtri1.SetHeight();
+                    eqtri1.CalculateArea();
+                    eqtri1.CalulatePerimeter();
+                    eqtri1.OutputSize();
                 }
                 else
                 {
@@ -172,56 +182,109 @@ namespace OOPShapeCalculations
                 Console.ReadLine();
             }
         }
-        public class Triangle
+        public class RATriangle
         {
             //Declares private variable for each property of the triangle
-            private double _triArea;
-            private double _triBase;
-            private double _triHeight;
-            private double _triPerimeter;
+            private double _raTriArea;
+            private double _raTriBase;
+            private double _raTriHeight;
+            private double _raTriPerimeter;
 
 
             //Declares public variables for the area and perimeter of the triangle
-            public double TriArea
+            public double raTriArea
             {
-                get { return _triArea; }
+                get { return _raTriArea; }
             }
-            public double TriPerimeter
+            public double raTriPerimeter
             {
-                get { return _triPerimeter; }
+                get { return _raTriPerimeter; }
             }
 
 
             //Method for calculating the area of the triangle
             public void CalculateArea()
             {
-                _triArea = Math.Round(((_triBase * _triHeight) / 2), 2);
+                _raTriArea = Math.Round(((_raTriBase * _raTriHeight) / 2), 2);
             }
         
             //Method for calculating the perimeter of the triangle
             public void CalulatePerimeter()
             {
-                _triPerimeter = Math.Round((_triBase + _triHeight + (Math.Sqrt(Math.Pow(_triBase, 2) + (Math.Pow(_triHeight, 2))))), 2);
+                _raTriPerimeter = Math.Round((_raTriBase + _raTriHeight + (Math.Sqrt(Math.Pow(_raTriBase, 2) + (Math.Pow(_raTriHeight, 2))))), 2);
             }
 
             //Method for getting the value for the base of the triangle from the user
             public void SetBase()
             {
                 Console.WriteLine("Please enter the base of the triangle");
-                _triBase = Int32.Parse(Console.ReadLine());
+                _raTriBase = Int32.Parse(Console.ReadLine());
             }
 
             //Method for getting the value for the height of the triangle from the user
             public void SetHeight()
             {
                 Console.WriteLine("Please enter the height of the triangle");
-                _triHeight = Int32.Parse(Console.ReadLine());
+                _raTriHeight = Int32.Parse(Console.ReadLine());
             }
 
             //Method for outputing the values of the triangle
             public void OutputSize()
             {
-                Console.WriteLine($"The triangle has a base of {_triBase}, a height of {_triHeight}, an area of {_triArea} and a perimeter of {_triPerimeter}");
+                Console.WriteLine($"The right-angled triangle has a base of {_raTriBase}, a height of {_raTriHeight}, an area of {_raTriArea} and a perimeter of {_raTriPerimeter}");
+                Console.ReadLine();
+            }
+        }
+        public class EQTriangle
+        {
+            //Declares private variable for each property of the triangle
+            private double _eqTriArea;
+            private double _eqTriBase;
+            private double _eqTriHeight;
+            private double _eqTriPerimeter;
+
+
+            //Declares public variables for the area and perimeter of the triangle
+            public double eqTriArea
+            {
+                get { return _eqTriArea; }
+            }
+            public double eqTriPerimeter
+            {
+                get { return _eqTriPerimeter; }
+            }
+
+
+            //Method for calculating the area of the triangle
+            public void CalculateArea()
+            {
+                _eqTriArea = Math.Round(((_eqTriBase * _eqTriHeight) / 2), 2);
+            }
+
+            //Method for calculating the perimeter of the triangle
+            public void CalulatePerimeter()
+            {
+                _eqTriPerimeter = Math.Round((_eqTriBase +  ((Math.Sqrt(Math.Pow(_eqTriBase, 2) + (Math.Pow(_eqTriHeight, 2) ) ) ) *2) ), 2);
+            }
+
+            //Method for getting the value for the base of the triangle from the user
+            public void SetBase()
+            {
+                Console.WriteLine("Please enter the base of the triangle");
+                _eqTriBase = Int32.Parse(Console.ReadLine());
+            }
+
+            //Method for getting the value for the height of the triangle from the user
+            public void SetHeight()
+            {
+                Console.WriteLine("Please enter the height of the triangle");
+                _eqTriHeight = Int32.Parse(Console.ReadLine());
+            }
+
+            //Method for outputing the values of the triangle
+            public void OutputSize()
+            {
+                Console.WriteLine($"The equilateral triangle has a base of {_eqTriBase}, a height of {_eqTriHeight}, an area of {_eqTriArea} and a perimeter of {_eqTriPerimeter}");
                 Console.ReadLine();
             }
         }
