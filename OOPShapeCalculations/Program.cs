@@ -14,6 +14,9 @@ namespace OOPShapeCalculations
             //11.03.2020 - 12.03.2020
             Decision Decision1 = new Decision();
             Decision1.GetInput();
+
+
+            
         }
         public class Decision
         {
@@ -48,9 +51,6 @@ namespace OOPShapeCalculations
                     case 1:
                     Circle circ1 = new Circle();
                     circ1.SetRadius();
-                    circ1.CalculateArea();
-                    circ1.CalculatePerimeter();
-                    circ1.OutputSize();
                        break;
                     case 2:
                     Rectangle rect1 = new Rectangle();
@@ -134,40 +134,16 @@ namespace OOPShapeCalculations
             public void SetWidth()
             {
                 Console.WriteLine("Please enter the width of the rectangle:");
-                try
-                {
-                    _rectWidth = Int32.Parse(Console.ReadLine());
-                }
-                catch (Exception)
-                {
-                    Console.WriteLine("Please enter a number!");
-                    this.SetWidth();
-                }
-                if (_rectWidth <= 0)
-                {
-                    Console.WriteLine("Please enter a number greater than 0!");
-                    this.SetWidth();
-                }
+                Validate Validation1 = new Validate();
+                _rectWidth = Validation1.ValidateInput();
             }
 
             //Method for getting the value of the length of a rectangle from the user
             public void SetLength()
             {
                 Console.WriteLine("Please enter the length of the rectangle:");
-                try
-                {
-                    _rectLength = Int32.Parse(Console.ReadLine());
-                }
-                catch (Exception)
-                {
-                    Console.WriteLine("Please enter a number!");
-                    this.SetLength();
-                }
-                if (_rectLength <= 0)
-                {
-                    Console.WriteLine("Please enter a number greater than 0!");
-                    this.SetLength();
-                }
+                Validate Validation1 = new Validate();
+                _rectLength = Validation1.ValidateInput();               
             }
 
             //Method for outputing the values of a rectangle
@@ -182,11 +158,11 @@ namespace OOPShapeCalculations
 
             //Declares private variables for each of the properties of a circle
             private double _circArea;
-            private double _circRadius;
+            private int _circRadius;
             private double _circPerimeter;
 
             //Declares public variables for each of the properties of a circle
-            public double circRadius
+            public int circRadius
             {
                 get { return _circRadius; }
             }
@@ -203,32 +179,23 @@ namespace OOPShapeCalculations
             public void CalculateArea()
             {
                 _circArea = Math.Round(Math.PI * Math.Pow(_circRadius, 2), 2);
+                this.CalculatePerimeter();
             }
 
             //Method for calculating the perimeter of a circle
             public void CalculatePerimeter()
             {
                 _circPerimeter = Math.Round(Math.PI * (_circRadius * 2), 2);
+                this.OutputSize();
             }
 
             //Method for getting the value of the radius of a circle from the user
             public void SetRadius()
             {
                 Console.WriteLine("Please enter the radius of the circle:");
-                try
-                {
-                    _circRadius = Int32.Parse(Console.ReadLine());
-                }
-                catch (Exception)
-                {
-                    Console.WriteLine("Please enter a number!");
-                    this.SetRadius();
-                }
-                if (_circRadius <= 0)
-                {
-                    Console.WriteLine("Please enter a number greater than 0!");
-                    this.SetRadius();
-                }
+                Validate Validation1 = new Validate();
+                _circRadius = Validation1.ValidateInput();
+                this.CalculateArea();
 
             }
 
@@ -243,8 +210,8 @@ namespace OOPShapeCalculations
         {
             //Declares private variable for each property of a triangle
             private double _raTriArea;
-            private double _raTriBase;
-            private double _raTriHeight;
+            private int _raTriBase;
+            private int _raTriHeight;
             private double _raTriPerimeter;
 
 
@@ -261,7 +228,7 @@ namespace OOPShapeCalculations
             //Method for calculating the area of a triangle
             public void CalculateArea()
             {
-                _raTriArea = Math.Round(((_raTriBase * _raTriHeight) / 2), 2);
+                _raTriArea = Math.Round(((_raTriBase * _raTriHeight) / 2.0), 2);
             }
         
             //Method for calculating the perimeter of a triangle
@@ -274,40 +241,16 @@ namespace OOPShapeCalculations
             public void SetBase()
             {
                 Console.WriteLine("Please enter the base of the triangle");
-                try
-                {
-                    _raTriBase = Int32.Parse(Console.ReadLine());
-                }
-                catch (Exception)
-                {
-                    Console.WriteLine("Please enter a number!");
-                    this.SetBase();
-                }
-                if (_raTriBase <= 0)
-                {
-                    Console.WriteLine("Please enter a number greater than 0!");
-                    this.SetBase();
-                }
+                Validate Validation1 = new Validate();
+                _raTriBase = Validation1.ValidateInput();
             }
 
             //Method for getting the value for the height of the triangle from the user
             public void SetHeight()
             {
                 Console.WriteLine("Please enter the height of the triangle");
-                try
-                {
-                    _raTriHeight = Int32.Parse(Console.ReadLine());
-                }
-                catch (Exception)
-                {
-                    Console.WriteLine("Please enter a number!");
-                    this.SetHeight();
-                }
-                if (_raTriHeight <= 0)
-                {
-                    Console.WriteLine("Please enter a number greater than 0!");
-                    this.SetHeight();
-                }
+                Validate Validation1 = new Validate();
+                _raTriHeight = Validation1.ValidateInput();     
             }
 
             //Method for outputing the values of a triangle
@@ -321,8 +264,8 @@ namespace OOPShapeCalculations
         {
             //Declares private variable for each property of a triangle
             private double _eqTriArea;
-            private double _eqTriBase;
-            private double _eqTriHeight;
+            private int _eqTriBase;
+            private int _eqTriHeight;
             private double _eqTriPerimeter;
 
 
@@ -335,12 +278,19 @@ namespace OOPShapeCalculations
             {
                 get { return _eqTriPerimeter; }
             }
-
+            public int eqTriBase
+            {
+                get { return _eqTriBase; }
+            }          
+            public int eqTriHeight
+            {
+                get { return _eqTriHeight; }
+            }                   
 
             //Method for calculating the area of a triangle
             public void CalculateArea()
             {
-                _eqTriArea = Math.Round(((_eqTriBase * _eqTriHeight) / 2), 2);
+                _eqTriArea = Math.Round(((_eqTriBase * _eqTriHeight) / 2.0), 2);
             }
 
             //Method for calculating the perimeter of a triangle
@@ -354,40 +304,16 @@ namespace OOPShapeCalculations
             public void SetBase()
             {
                 Console.WriteLine("Please enter the base of the triangle");
-                try
-                {
-                    _eqTriBase = Int32.Parse(Console.ReadLine());
-                }
-                catch (Exception)
-                {
-                    Console.WriteLine("Please enter a number!");
-                    this.SetBase();
-                }
-                if (_eqTriBase <= 0)
-                {
-                    Console.WriteLine("Please enter a number greater than 0!");
-                    this.SetBase();
-                }
+                Validate Validation1 = new Validate();
+                _eqTriBase = Validation1.ValidateInput();
             }
 
             //Method for getting the value for the height of the triangle from the user
             public void SetHeight()
             {
                 Console.WriteLine("Please enter the height of the triangle");
-                try
-                {
-                    _eqTriHeight = Int32.Parse(Console.ReadLine());
-                }
-                catch (Exception)
-                {
-                    Console.WriteLine("Please enter a number!");
-                    this.SetHeight();
-                }
-                if (_eqTriHeight <= 0)
-                {
-                    Console.WriteLine("Please enter a number greater than 0!");
-                    this.SetHeight();
-                }
+                Validate Validation1 = new Validate();
+                _eqTriHeight = Validation1.ValidateInput();
             }
 
             //Method for outputing the values of a triangle
@@ -401,16 +327,16 @@ namespace OOPShapeCalculations
         {
             //Declares private variables for each property of a regular polygon
             private int _numberOfSides;
-            private double _regPolygonSide;
+            private int _regPolygonSide;
             private double _regPolygonArea;
             private double _regPolygonPerimeter;
 
             //Declare public variables for each property of a regular polygon
-            public double NumberOfSides
+            public int NumberOfSides
             {
                 get { return _numberOfSides; }
             }
-            public double RegPolygonSide
+            public int RegPolygonSide
             {
                 get { return _regPolygonSide; }
             }
@@ -448,22 +374,9 @@ namespace OOPShapeCalculations
             public void GetSideLength()
             {
                 Console.WriteLine("What is the length of one side?");
-                try
-                {
-                    _regPolygonSide = Int32.Parse(Console.ReadLine());
-                }
-                catch (Exception)
-                {
-                    Console.WriteLine("Please enter a number!");
-                    this.GetSideLength();
-                }
-                //Validation to check that the length of one side of a regular polygon is not a negative number.
-                if (_regPolygonSide <= 0)
-                {
-                    Console.WriteLine("Please enter a number greater than 0!");
-                    this.GetSideLength();
-                }
-            }
+                Validate Validation1 = new Validate();
+                _regPolygonSide = Validation1.ValidateInput();
+            } 
 
             //Method for calculating the value of the perimeter of a regular polygon
             public void CalculatePerimeter()
@@ -474,7 +387,7 @@ namespace OOPShapeCalculations
             //Method for calculating the value of the area of a regular polygon
             public void CalculateArea()
             {
-                _regPolygonArea = (((_regPolygonSide /((Math.Tan((180 / _numberOfSides)* Math.PI / 180)) * 2) ) * _regPolygonPerimeter) / 2);
+                _regPolygonArea = Math.Round((((_regPolygonSide /((Math.Tan((180 / _numberOfSides)* Math.PI / 180)) * 2) ) * _regPolygonPerimeter) / 2), 2);
             } 
 
             //Method for outputing the values of a regular polygon
@@ -487,6 +400,34 @@ namespace OOPShapeCalculations
 
 
         }
-
+        public class Validate
+        {
+            public int ValidateInput()
+            {
+                 int UserInput = 0;
+                 bool IsValid = false;
+                 //Validation to check that the input from the user is an integer and above 0
+                 while(IsValid ==  false)
+                 {
+                    try
+                    {
+                        UserInput = Int32.Parse(Console.ReadLine());
+                        if (UserInput <= 0 )
+                        {
+                            Console.WriteLine("Please enter a number greater than 0!");
+                        }
+                        else
+                        {
+                            IsValid = true;
+                        }
+                    }
+                    catch (Exception)
+                    {
+                    Console.WriteLine("Please enter a number!");
+                    }
+                 }  
+                 return UserInput;
+            }     
+        }
     }
 }
