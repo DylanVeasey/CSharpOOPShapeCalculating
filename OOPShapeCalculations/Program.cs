@@ -29,6 +29,7 @@ namespace OOPShapeCalculations
                 Console.WriteLine("2)Rectangle");
                 Console.WriteLine("3)Right-angled triangle");
                 Console.WriteLine("4)Equilateral or isosceles traingle");
+                Console.WriteLine("5)Regular Polygon");
                 _userInput = Int32.Parse(Console.ReadLine());
                 this.Decide();
             }
@@ -66,6 +67,14 @@ namespace OOPShapeCalculations
                     eqtri1.CalculateArea();
                     eqtri1.CalulatePerimeter();
                     eqtri1.OutputSize();
+                        break;
+                    case 5:
+                    RegPolygon regpolygon1 = new RegPolygon();
+                    regpolygon1.GetNumberOfSides();
+                    regpolygon1.GetSideLength();
+                    regpolygon1.CalculatePerimeter();
+                    regpolygon1.CalculateArea();
+                    regpolygon1.OutputSize();
                         break;
                     default:
                     Console.WriteLine("Please enter a number from 1 to 4!");
@@ -127,7 +136,7 @@ namespace OOPShapeCalculations
                 _rectLength = Int32.Parse(Console.ReadLine());
             }
 
-            //Method for outputing the values of the rectangle
+            //Method for outputing the values of a rectangle
             public void OutputSize()
             {
                 Console.WriteLine($"The rectangle has a width of {_rectWidth} and a length of {_rectLength}, an area of {_rectArea} and a perimeter of {_rectPerimeter}.");
@@ -175,7 +184,7 @@ namespace OOPShapeCalculations
                 _circRadius = Int32.Parse(Console.ReadLine());
             }
 
-            //Method for outputing the values of the circle
+            //Method for outputing the values of a circle
             public void OutputSize()
             {
                 Console.WriteLine($"The circle has a radius of {_circRadius}, an area of {_circArea} and a perimeter of {_circPerimeter}");
@@ -184,14 +193,14 @@ namespace OOPShapeCalculations
         }
         public class RATriangle
         {
-            //Declares private variable for each property of the triangle
+            //Declares private variable for each property of a triangle
             private double _raTriArea;
             private double _raTriBase;
             private double _raTriHeight;
             private double _raTriPerimeter;
 
 
-            //Declares public variables for the area and perimeter of the triangle
+            //Declares public variables for the area and perimeter of a triangle
             public double raTriArea
             {
                 get { return _raTriArea; }
@@ -202,13 +211,13 @@ namespace OOPShapeCalculations
             }
 
 
-            //Method for calculating the area of the triangle
+            //Method for calculating the area of a triangle
             public void CalculateArea()
             {
                 _raTriArea = Math.Round(((_raTriBase * _raTriHeight) / 2), 2);
             }
         
-            //Method for calculating the perimeter of the triangle
+            //Method for calculating the perimeter of a triangle
             public void CalulatePerimeter()
             {
                 _raTriPerimeter = Math.Round((_raTriBase + _raTriHeight + (Math.Sqrt(Math.Pow(_raTriBase, 2) + (Math.Pow(_raTriHeight, 2))))), 2);
@@ -228,7 +237,7 @@ namespace OOPShapeCalculations
                 _raTriHeight = Int32.Parse(Console.ReadLine());
             }
 
-            //Method for outputing the values of the triangle
+            //Method for outputing the values of a triangle
             public void OutputSize()
             {
                 Console.WriteLine($"The right-angled triangle has a base of {_raTriBase}, a height of {_raTriHeight}, an area of {_raTriArea} and a perimeter of {_raTriPerimeter}");
@@ -237,14 +246,14 @@ namespace OOPShapeCalculations
         }
         public class EQTriangle
         {
-            //Declares private variable for each property of the triangle
+            //Declares private variable for each property of a triangle
             private double _eqTriArea;
             private double _eqTriBase;
             private double _eqTriHeight;
             private double _eqTriPerimeter;
 
 
-            //Declares public variables for the area and perimeter of the triangle
+            //Declares public variables for the area and perimeter of a triangle
             public double eqTriArea
             {
                 get { return _eqTriArea; }
@@ -255,13 +264,13 @@ namespace OOPShapeCalculations
             }
 
 
-            //Method for calculating the area of the triangle
+            //Method for calculating the area of a triangle
             public void CalculateArea()
             {
                 _eqTriArea = Math.Round(((_eqTriBase * _eqTriHeight) / 2), 2);
             }
 
-            //Method for calculating the perimeter of the triangle
+            //Method for calculating the perimeter of a triangle
             public void CalulatePerimeter()
             {
                 _eqTriPerimeter = Math.Round((_eqTriBase +  ((Math.Sqrt(Math.Pow((_eqTriBase/2), 2) + (Math.Pow(_eqTriHeight, 2) ) ) ) *2) ), 2);
@@ -281,12 +290,75 @@ namespace OOPShapeCalculations
                 _eqTriHeight = Int32.Parse(Console.ReadLine());
             }
 
-            //Method for outputing the values of the triangle
+            //Method for outputing the values of a triangle
             public void OutputSize()
             {
                 Console.WriteLine($"The triangle has a base of {_eqTriBase}, a height of {_eqTriHeight}, an area of {_eqTriArea} and a perimeter of {_eqTriPerimeter}");
                 Console.ReadLine();
             }
         }
+        public class RegPolygon
+        {
+            //Declares private variables for each property of a regular polygon
+            private int _numberOfSides;
+            private double _regPolygonSide;
+            private double _regPolygonArea;
+            private double _regPolygonPerimeter;
+
+            //Declare public variables for each property of a regular polygon
+            public double NumberOfSides
+            {
+                get { return _numberOfSides; }
+            }
+            public double RegPolygonSide
+            {
+                get { return _regPolygonSide; }
+            }
+            public double RegPolgonArea
+            {
+                get { return _regPolygonArea; }
+            }
+            public double RegPolygonPerimeter
+            {
+                get { return _regPolygonPerimeter; }
+            }
+
+            //Method for getting the value for the number of sides of a regular polygon from the user
+            public void GetNumberOfSides()
+            {
+                Console.WriteLine("How many sides does the regular polygon have?");
+                _numberOfSides = Int32.Parse(Console.ReadLine());
+            }
+
+            //Method for getting the value of the length of the side of a regular polygn from the user
+            public void GetSideLength()
+            {
+                Console.WriteLine("What is the length of one side?");
+                _regPolygonSide = Int32.Parse(Console.ReadLine());
+            }
+
+            //Method for calculating the value of the perimeter of a regular polygon
+            public void CalculatePerimeter()
+            {
+                _regPolygonPerimeter = _regPolygonSide * _numberOfSides;
+            }
+
+            //Method for calculating the value of the area of a regular polygon
+            public void CalculateArea()
+            {
+                _regPolygonArea = (((_regPolygonSide /((Math.Tan((180 / _numberOfSides)* Math.PI / 180)) * 2) ) * _regPolygonPerimeter) / 2);
+            } 
+
+            //Method for outputing the values of a regular polygon
+            public void OutputSize()
+            {
+                Console.WriteLine($"The regular polygon has {_numberOfSides} sides, a side length of {_regPolygonSide}, a perimeter of {_regPolygonPerimeter} and an area of {_regPolygonArea}");
+                Console.ReadLine();
+            }
+
+
+
+        }
+
     }
 }
