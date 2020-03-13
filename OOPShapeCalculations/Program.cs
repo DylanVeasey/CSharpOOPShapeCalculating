@@ -30,7 +30,15 @@ namespace OOPShapeCalculations
                 Console.WriteLine("3)Right-angled triangle");
                 Console.WriteLine("4)Equilateral or isosceles traingle");
                 Console.WriteLine("5)Regular Polygon");
-                _userInput = Int32.Parse(Console.ReadLine());
+                try
+                {
+                    _userInput = Int32.Parse(Console.ReadLine());
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Please enter a number!");
+                    this.GetInput();
+                }
                 this.Decide();
             }
             public void Decide()
@@ -126,7 +134,15 @@ namespace OOPShapeCalculations
             public void SetWidth()
             {
                 Console.WriteLine("Please enter the width of the rectangle:");
-                _rectWidth = Int32.Parse(Console.ReadLine());
+                try
+                {
+                    _rectWidth = Int32.Parse(Console.ReadLine());
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Please enter a number!");
+                    this.SetWidth();
+                }
                 if (_rectWidth <= 0)
                 {
                     Console.WriteLine("Please enter a number greater than 0!");
@@ -138,7 +154,15 @@ namespace OOPShapeCalculations
             public void SetLength()
             {
                 Console.WriteLine("Please enter the length of the rectangle:");
-                _rectLength = Int32.Parse(Console.ReadLine());
+                try
+                {
+                    _rectLength = Int32.Parse(Console.ReadLine());
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Please enter a number!");
+                    this.SetLength();
+                }
                 if (_rectLength <= 0)
                 {
                     Console.WriteLine("Please enter a number greater than 0!");
@@ -191,7 +215,15 @@ namespace OOPShapeCalculations
             public void SetRadius()
             {
                 Console.WriteLine("Please enter the radius of the circle:");
-                _circRadius = Int32.Parse(Console.ReadLine());
+                try
+                {
+                    _circRadius = Int32.Parse(Console.ReadLine());
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Please enter a number!");
+                    this.SetRadius();
+                }
                 if (_circRadius <= 0)
                 {
                     Console.WriteLine("Please enter a number greater than 0!");
@@ -242,7 +274,15 @@ namespace OOPShapeCalculations
             public void SetBase()
             {
                 Console.WriteLine("Please enter the base of the triangle");
-                _raTriBase = Int32.Parse(Console.ReadLine());
+                try
+                {
+                    _raTriBase = Int32.Parse(Console.ReadLine());
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Please enter a number!");
+                    this.SetBase();
+                }
                 if (_raTriBase <= 0)
                 {
                     Console.WriteLine("Please enter a number greater than 0!");
@@ -254,7 +294,15 @@ namespace OOPShapeCalculations
             public void SetHeight()
             {
                 Console.WriteLine("Please enter the height of the triangle");
-                _raTriHeight = Int32.Parse(Console.ReadLine());
+                try
+                {
+                    _raTriHeight = Int32.Parse(Console.ReadLine());
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Please enter a number!");
+                    this.SetHeight();
+                }
                 if (_raTriHeight <= 0)
                 {
                     Console.WriteLine("Please enter a number greater than 0!");
@@ -306,7 +354,15 @@ namespace OOPShapeCalculations
             public void SetBase()
             {
                 Console.WriteLine("Please enter the base of the triangle");
-                _eqTriBase = Int32.Parse(Console.ReadLine());
+                try
+                {
+                    _eqTriBase = Int32.Parse(Console.ReadLine());
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Please enter a number!");
+                    this.SetBase();
+                }
                 if (_eqTriBase <= 0)
                 {
                     Console.WriteLine("Please enter a number greater than 0!");
@@ -318,7 +374,15 @@ namespace OOPShapeCalculations
             public void SetHeight()
             {
                 Console.WriteLine("Please enter the height of the triangle");
-                _eqTriHeight = Int32.Parse(Console.ReadLine());
+                try
+                {
+                    _eqTriHeight = Int32.Parse(Console.ReadLine());
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Please enter a number!");
+                    this.SetHeight();
+                }
                 if (_eqTriHeight <= 0)
                 {
                     Console.WriteLine("Please enter a number greater than 0!");
@@ -363,7 +427,15 @@ namespace OOPShapeCalculations
             public void GetNumberOfSides()
             {
                 Console.WriteLine("How many sides does the regular polygon have?");
-                _numberOfSides = Int32.Parse(Console.ReadLine());
+                try
+                {
+                    _numberOfSides = Int32.Parse(Console.ReadLine());
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Please enter a number!");
+                    this.GetNumberOfSides();
+                }
                 //Validation to check that the number of sides of a regular polygon is more than 2.
                 if (_numberOfSides < 3 )
                 {
@@ -376,9 +448,17 @@ namespace OOPShapeCalculations
             public void GetSideLength()
             {
                 Console.WriteLine("What is the length of one side?");
-                _regPolygonSide = Int32.Parse(Console.ReadLine());
+                try
+                {
+                    _regPolygonSide = Int32.Parse(Console.ReadLine());
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Please enter a number!");
+                    this.GetSideLength();
+                }
                 //Validation to check that the length of one side of a regular polygon is not a negative number.
-                if(_regPolygonSide <= 0)
+                if (_regPolygonSide <= 0)
                 {
                     Console.WriteLine("Please enter a number greater than 0!");
                     this.GetSideLength();
@@ -407,5 +487,6 @@ namespace OOPShapeCalculations
 
 
         }
+
     }
 }
