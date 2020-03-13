@@ -34,43 +34,43 @@ namespace OOPShapeCalculations
             }
             public void Decide()
             {
-                if(_userInput == 1)
+                switch(_userInput)
                 {
+                    case 1:
                     Circle circ1 = new Circle();
                     circ1.SetRadius();
                     circ1.CalculateArea();
                     circ1.CalculatePerimeter();
                     circ1.OutputSize();
-                }else if(_userInput == 2)
-                {
+                       break;
+                    case 2:
                     Rectangle rect1 = new Rectangle();
                     rect1.SetLength();
                     rect1.SetWidth();
                     rect1.CalculatePerimeter();
                     rect1.CalculateArea();
                     rect1.OutputSize();
-                }
-                else if(_userInput == 3)
-                {
+                        break;
+                    case 3:
                     RATriangle ratri1 = new RATriangle();
                     ratri1.SetBase();
                     ratri1.SetHeight();
                     ratri1.CalculateArea();
                     ratri1.CalulatePerimeter();
                     ratri1.OutputSize();
-                }
-                else if(_userInput == 4)
-                {
+                        break;
+                    case 4:
                     EQTriangle eqtri1 = new EQTriangle();
                     eqtri1.SetBase();
                     eqtri1.SetHeight();
                     eqtri1.CalculateArea();
                     eqtri1.CalulatePerimeter();
                     eqtri1.OutputSize();
-                }
-                else
-                {
-                    Console.WriteLine("Please enter 1,2 or 3!");
+                        break;
+                    default:
+                    Console.WriteLine("Please enter a number from 1 to 4!");
+                        this.GetInput();
+                        break;
                 }
             }
         }
