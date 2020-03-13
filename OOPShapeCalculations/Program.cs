@@ -127,6 +127,11 @@ namespace OOPShapeCalculations
             {
                 Console.WriteLine("Please enter the width of the rectangle:");
                 _rectWidth = Int32.Parse(Console.ReadLine());
+                if (_rectWidth <= 0)
+                {
+                    Console.WriteLine("Please enter a number greater than 0!");
+                    this.SetWidth();
+                }
             }
 
             //Method for getting the value of the length of a rectangle from the user
@@ -134,6 +139,11 @@ namespace OOPShapeCalculations
             {
                 Console.WriteLine("Please enter the length of the rectangle:");
                 _rectLength = Int32.Parse(Console.ReadLine());
+                if (_rectLength <= 0)
+                {
+                    Console.WriteLine("Please enter a number greater than 0!");
+                    this.SetLength();
+                }
             }
 
             //Method for outputing the values of a rectangle
@@ -182,6 +192,12 @@ namespace OOPShapeCalculations
             {
                 Console.WriteLine("Please enter the radius of the circle:");
                 _circRadius = Int32.Parse(Console.ReadLine());
+                if (_circRadius <= 0)
+                {
+                    Console.WriteLine("Please enter a number greater than 0!");
+                    this.SetRadius();
+                }
+
             }
 
             //Method for outputing the values of a circle
@@ -210,7 +226,6 @@ namespace OOPShapeCalculations
                 get { return _raTriPerimeter; }
             }
 
-
             //Method for calculating the area of a triangle
             public void CalculateArea()
             {
@@ -228,6 +243,11 @@ namespace OOPShapeCalculations
             {
                 Console.WriteLine("Please enter the base of the triangle");
                 _raTriBase = Int32.Parse(Console.ReadLine());
+                if (_raTriBase <= 0)
+                {
+                    Console.WriteLine("Please enter a number greater than 0!");
+                    this.SetBase();
+                }
             }
 
             //Method for getting the value for the height of the triangle from the user
@@ -235,6 +255,11 @@ namespace OOPShapeCalculations
             {
                 Console.WriteLine("Please enter the height of the triangle");
                 _raTriHeight = Int32.Parse(Console.ReadLine());
+                if (_raTriHeight <= 0)
+                {
+                    Console.WriteLine("Please enter a number greater than 0!");
+                    this.SetHeight();
+                }
             }
 
             //Method for outputing the values of a triangle
@@ -273,7 +298,8 @@ namespace OOPShapeCalculations
             //Method for calculating the perimeter of a triangle
             public void CalulatePerimeter()
             {
-                _eqTriPerimeter = Math.Round((_eqTriBase +  ((Math.Sqrt(Math.Pow((_eqTriBase/2), 2) + (Math.Pow(_eqTriHeight, 2) ) ) ) *2) ), 2);
+                _eqTriPerimeter = Math.Round((_eqTriBase +  ((Math.Sqrt((Math.Pow((_eqTriBase/2), 2) + (Math.Pow(_eqTriHeight, 2)) ) ) ) *2) ), 2);
+
             }
 
             //Method for getting the value for the base of the triangle from the user
@@ -281,6 +307,11 @@ namespace OOPShapeCalculations
             {
                 Console.WriteLine("Please enter the base of the triangle");
                 _eqTriBase = Int32.Parse(Console.ReadLine());
+                if (_eqTriBase <= 0)
+                {
+                    Console.WriteLine("Please enter a number greater than 0!");
+                    this.SetBase();
+                }
             }
 
             //Method for getting the value for the height of the triangle from the user
@@ -288,6 +319,11 @@ namespace OOPShapeCalculations
             {
                 Console.WriteLine("Please enter the height of the triangle");
                 _eqTriHeight = Int32.Parse(Console.ReadLine());
+                if (_eqTriHeight <= 0)
+                {
+                    Console.WriteLine("Please enter a number greater than 0!");
+                    this.SetHeight();
+                }
             }
 
             //Method for outputing the values of a triangle
@@ -328,13 +364,25 @@ namespace OOPShapeCalculations
             {
                 Console.WriteLine("How many sides does the regular polygon have?");
                 _numberOfSides = Int32.Parse(Console.ReadLine());
+                //Validation to check that the number of sides of a regular polygon is more than 2.
+                if (_numberOfSides < 3 )
+                {
+                    Console.WriteLine("Please enter a number greater than 2!");
+                    this.GetNumberOfSides();
+                }  
             }
 
-            //Method for getting the value of the length of the side of a regular polygn from the user
+            //Method for getting the value of the length of the side of a regular polygon from the user
             public void GetSideLength()
             {
                 Console.WriteLine("What is the length of one side?");
                 _regPolygonSide = Int32.Parse(Console.ReadLine());
+                //Validation to check that the length of one side of a regular polygon is not a negative number.
+                if(_regPolygonSide <= 0)
+                {
+                    Console.WriteLine("Please enter a number greater than 0!");
+                    this.GetSideLength();
+                }
             }
 
             //Method for calculating the value of the perimeter of a regular polygon
@@ -359,6 +407,5 @@ namespace OOPShapeCalculations
 
 
         }
-
     }
 }
