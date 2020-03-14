@@ -11,12 +11,10 @@ namespace OOPShapeCalculations
         static void Main(string[] args)
         {
             //Dylan Veasey
-            //11.03.2020 - 12.03.2020
+            //11.03.2020 - 14.03.2020
+            //Simple C# program that calulates the area and perimeter of shapes using the object oriented programming paradigm.
             Decision Decision1 = new Decision();
-            Decision1.GetInput();
-
-
-            
+            Decision1.GetInput();        
         }
         public class Decision
         {
@@ -51,13 +49,16 @@ namespace OOPShapeCalculations
                     case 1:
                     Circle circ1 = new Circle();
                     circ1.SetRadius();
+                    circ1.CalculateArea();
+                    circ1.CalculatePerimeter();
+                    circ1.OutputSize();
                        break;
                     case 2:
                     Rectangle rect1 = new Rectangle();
                     rect1.SetLength();
                     rect1.SetWidth();
-                    rect1.CalculatePerimeter();
                     rect1.CalculateArea();
+                    rect1.CalculatePerimeter();
                     rect1.OutputSize();
                         break;
                     case 3:
@@ -80,8 +81,8 @@ namespace OOPShapeCalculations
                     RegPolygon regpolygon1 = new RegPolygon();
                     regpolygon1.GetNumberOfSides();
                     regpolygon1.GetSideLength();
-                    regpolygon1.CalculatePerimeter();
                     regpolygon1.CalculateArea();
+                    regpolygon1.CalculatePerimeter();
                     regpolygon1.OutputSize();
                         break;
                     default:
@@ -89,6 +90,54 @@ namespace OOPShapeCalculations
                         this.GetInput();
                         break;
                 }
+            }
+        }
+         public class Circle
+        {
+            //Declares private variables for each of the properties of a circle
+            private double _circArea;
+            private int _circRadius;
+            private double _circPerimeter;
+
+            //Declares public variables for each of the properties of a circle
+            public int circRadius
+            {
+                get { return _circRadius; }
+            }
+            public double circArea
+            {
+                get { return _circArea; }
+            }
+            public double circPerimeter
+            {
+                get { return _circPerimeter; }
+            }
+
+            //Method for getting the value of the radius of a circle from the user
+            public void SetRadius()
+            {
+                Console.WriteLine("Please enter the radius of the circle:");
+                Validate Validation1 = new Validate();
+                _circRadius = Validation1.ValidateInput();
+            }
+
+            //Method for calculating the area of a circle
+            public void CalculateArea()
+            {
+                _circArea = Math.Round(Math.PI * Math.Pow(_circRadius, 2), 2);
+            }
+
+            //Method for calculating the perimeter of a circle
+            public void CalculatePerimeter()
+            {
+                _circPerimeter = Math.Round(Math.PI * (_circRadius * 2), 2);
+            }
+
+            //Method for outputing the values of a circle
+            public void OutputSize()
+            {
+                Console.WriteLine($"The circle has a radius of {_circRadius}, an area of {_circArea} and a perimeter of {_circPerimeter}");
+                Console.ReadLine();
             }
         }
         public class Rectangle
@@ -118,26 +167,6 @@ namespace OOPShapeCalculations
                 get { return _rectPerimeter; }
             }
 
-            //Method for calculating the area of a rectangle
-            public void CalculateArea()
-            {
-                _rectArea = _rectLength * _rectWidth;
-            }
-
-            //Method for calculating the perimeter of a rectangle
-            public void CalculatePerimeter()
-            {
-                _rectPerimeter = (_rectLength * 2) + (_rectWidth * 2);
-            }
-
-            //Method for getting the value of the width of a rectangle from the user
-            public void SetWidth()
-            {
-                Console.WriteLine("Please enter the width of the rectangle:");
-                Validate Validation1 = new Validate();
-                _rectWidth = Validation1.ValidateInput();
-            }
-
             //Method for getting the value of the length of a rectangle from the user
             public void SetLength()
             {
@@ -146,63 +175,30 @@ namespace OOPShapeCalculations
                 _rectLength = Validation1.ValidateInput();               
             }
 
+             //Method for getting the value of the width of a rectangle from the user
+            public void SetWidth()
+            {
+                Console.WriteLine("Please enter the width of the rectangle:");
+                Validate Validation1 = new Validate();
+                _rectWidth = Validation1.ValidateInput();
+            }
+
+            //Method for calculating the perimeter of a rectangle
+            public void CalculatePerimeter()
+            {
+                _rectPerimeter = (_rectLength * 2) + (_rectWidth * 2);
+            }
+
+            //Method for calculating the area of a rectangle
+            public void CalculateArea()
+            {
+                _rectArea = _rectLength * _rectWidth;
+            }
+
             //Method for outputing the values of a rectangle
             public void OutputSize()
             {
                 Console.WriteLine($"The rectangle has a width of {_rectWidth} and a length of {_rectLength}, an area of {_rectArea} and a perimeter of {_rectPerimeter}.");
-                Console.ReadLine();
-            }
-        }
-        public class Circle
-        {
-
-            //Declares private variables for each of the properties of a circle
-            private double _circArea;
-            private int _circRadius;
-            private double _circPerimeter;
-
-            //Declares public variables for each of the properties of a circle
-            public int circRadius
-            {
-                get { return _circRadius; }
-            }
-            public double circArea
-            {
-                get { return _circArea; }
-            }
-            public double circPerimeter
-            {
-                get { return _circPerimeter; }
-            }
-
-            //Method for calculating the area of a circle
-            public void CalculateArea()
-            {
-                _circArea = Math.Round(Math.PI * Math.Pow(_circRadius, 2), 2);
-                this.CalculatePerimeter();
-            }
-
-            //Method for calculating the perimeter of a circle
-            public void CalculatePerimeter()
-            {
-                _circPerimeter = Math.Round(Math.PI * (_circRadius * 2), 2);
-                this.OutputSize();
-            }
-
-            //Method for getting the value of the radius of a circle from the user
-            public void SetRadius()
-            {
-                Console.WriteLine("Please enter the radius of the circle:");
-                Validate Validation1 = new Validate();
-                _circRadius = Validation1.ValidateInput();
-                this.CalculateArea();
-
-            }
-
-            //Method for outputing the values of a circle
-            public void OutputSize()
-            {
-                Console.WriteLine($"The circle has a radius of {_circRadius}, an area of {_circArea} and a perimeter of {_circPerimeter}");
                 Console.ReadLine();
             }
         }
@@ -225,20 +221,8 @@ namespace OOPShapeCalculations
                 get { return _raTriPerimeter; }
             }
 
-            //Method for calculating the area of a triangle
-            public void CalculateArea()
-            {
-                _raTriArea = Math.Round(((_raTriBase * _raTriHeight) / 2.0), 2);
-            }
-        
-            //Method for calculating the perimeter of a triangle
-            public void CalulatePerimeter()
-            {
-                _raTriPerimeter = Math.Round((_raTriBase + _raTriHeight + (Math.Sqrt(Math.Pow(_raTriBase, 2) + (Math.Pow(_raTriHeight, 2))))), 2);
-            }
-
             //Method for getting the value for the base of the triangle from the user
-            public void SetBase()
+             public void SetBase()
             {
                 Console.WriteLine("Please enter the base of the triangle");
                 Validate Validation1 = new Validate();
@@ -251,6 +235,18 @@ namespace OOPShapeCalculations
                 Console.WriteLine("Please enter the height of the triangle");
                 Validate Validation1 = new Validate();
                 _raTriHeight = Validation1.ValidateInput();     
+            }
+
+            //Method for calculating the area of a triangle
+            public void CalculateArea()
+            {
+                _raTriArea = Math.Round(((_raTriBase * _raTriHeight) / 2.0), 2);
+            }
+        
+            //Method for calculating the perimeter of a triangle
+            public void CalulatePerimeter()
+            {
+                _raTriPerimeter = Math.Round((_raTriBase + _raTriHeight + (Math.Sqrt(Math.Pow(_raTriBase, 2) + (Math.Pow(_raTriHeight, 2))))), 2);
             }
 
             //Method for outputing the values of a triangle
@@ -285,7 +281,23 @@ namespace OOPShapeCalculations
             public int eqTriHeight
             {
                 get { return _eqTriHeight; }
-            }                   
+            }   
+
+            //Method for getting the value for the base of the triangle from the user
+            public void SetBase()
+            {
+                Console.WriteLine("Please enter the base of the triangle");
+                Validate Validation1 = new Validate();
+                _eqTriBase = Validation1.ValidateInput();
+            }      
+
+             //Method for getting the value for the height of the triangle from the user
+            public void SetHeight()
+            {
+                Console.WriteLine("Please enter the height of the triangle");
+                Validate Validation1 = new Validate();
+                _eqTriHeight = Validation1.ValidateInput();
+            }          
 
             //Method for calculating the area of a triangle
             public void CalculateArea()
@@ -298,22 +310,6 @@ namespace OOPShapeCalculations
             {
                 _eqTriPerimeter = Math.Round((_eqTriBase +  ((Math.Sqrt((Math.Pow((_eqTriBase/2), 2) + (Math.Pow(_eqTriHeight, 2)) ) ) ) *2) ), 2);
 
-            }
-
-            //Method for getting the value for the base of the triangle from the user
-            public void SetBase()
-            {
-                Console.WriteLine("Please enter the base of the triangle");
-                Validate Validation1 = new Validate();
-                _eqTriBase = Validation1.ValidateInput();
-            }
-
-            //Method for getting the value for the height of the triangle from the user
-            public void SetHeight()
-            {
-                Console.WriteLine("Please enter the height of the triangle");
-                Validate Validation1 = new Validate();
-                _eqTriHeight = Validation1.ValidateInput();
             }
 
             //Method for outputing the values of a triangle
@@ -378,17 +374,17 @@ namespace OOPShapeCalculations
                 _regPolygonSide = Validation1.ValidateInput();
             } 
 
-            //Method for calculating the value of the perimeter of a regular polygon
-            public void CalculatePerimeter()
-            {
-                _regPolygonPerimeter = _regPolygonSide * _numberOfSides;
-            }
-
             //Method for calculating the value of the area of a regular polygon
             public void CalculateArea()
             {
                 _regPolygonArea = Math.Round((((_regPolygonSide /((Math.Tan((180 / _numberOfSides)* Math.PI / 180)) * 2) ) * _regPolygonPerimeter) / 2), 2);
             } 
+
+            //Method for calculating the value of the perimeter of a regular polygon
+            public void CalculatePerimeter()
+            {
+                _regPolygonPerimeter = _regPolygonSide * _numberOfSides;
+            }
 
             //Method for outputing the values of a regular polygon
             public void OutputSize()
@@ -396,9 +392,6 @@ namespace OOPShapeCalculations
                 Console.WriteLine($"The regular polygon has {_numberOfSides} sides, a side length of {_regPolygonSide}, a perimeter of {_regPolygonPerimeter} and an area of {_regPolygonArea}");
                 Console.ReadLine();
             }
-
-
-
         }
         public class Validate
         {
