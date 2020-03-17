@@ -81,12 +81,12 @@ namespace OOPShapeCalculations
                     RegPolygon regpolygon1 = new RegPolygon();
                     regpolygon1.GetNumberOfSides();
                     regpolygon1.GetSideLength();
-                    regpolygon1.CalculateArea();
                     regpolygon1.CalculatePerimeter();
+                    regpolygon1.CalculateArea();
                     regpolygon1.OutputSize();
                         break;
                     default:
-                    Console.WriteLine("Please enter a number from 1 to 4!");
+                    Console.WriteLine("Please enter a number from 1 to 5!");
                         this.GetInput();
                         break;
                 }
@@ -393,10 +393,13 @@ namespace OOPShapeCalculations
                 Console.ReadLine();
             }
         }
+        //A class to Validate inputs
         public class Validate
         {
+            //A public method to validate the user inputs
             public int ValidateInput()
             {
+                 //Declares two variables to be used in the method
                  int UserInput = 0;
                  bool IsValid = false;
                  //Validation to check that the input from the user is an integer and above 0
@@ -411,6 +414,7 @@ namespace OOPShapeCalculations
                         }
                         else
                         {
+                            //Exits out of the validation while loop if the criteria for a valid input is met
                             IsValid = true;
                         }
                     }
