@@ -308,10 +308,10 @@ namespace OOPShapeCalculations
             //Method for calculating the perimeter of a triangle
             public void CalulatePerimeter()
             {
-                _eqTriPerimeter = Math.Round((_eqTriBase +  ((Math.Sqrt((Math.Pow((_eqTriBase/2), 2) + (Math.Pow(_eqTriHeight, 2)) ) ) ) *2) ), 2);
+                _eqTriPerimeter = Math.Round(_eqTriBase +  ((Math.Sqrt((Math.Pow(_eqTriBase, 2) + 4* (Math.Pow(_eqTriHeight, 2))) ) ) ), 2);
 
             }
-
+        
             //Method for outputing the values of a triangle
             public void OutputSize()
             {
