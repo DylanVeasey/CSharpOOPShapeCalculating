@@ -377,7 +377,18 @@ namespace OOPShapeCalculations
             //Method for calculating the value of the area of a regular polygon
             public void CalculateArea()
             {
-                _regPolygonArea = Math.Round((((_regPolygonSide /((Math.Tan((180 / _numberOfSides)* Math.PI / 180)) * 2) ) * _regPolygonPerimeter) / 2), 2);
+                //The regular polygon is equal to...
+                _regPolygonArea = 
+                //Rounds the number
+                Math.Round((((
+                //The apothem of a regular polygon is the shortest distance from the center point to one of the sides, creating a right angle.
+                //The formula for calculating the length of the apothem is this: the length of the side (_regPolygonSide) divided by 2 times the tangent of 180 degrees divided by the number of sides (_numberOfSides).
+                // * Math.PI/180 converts it to radians which is needed when using Math.Tan()
+                _regPolygonSide / ((Math.Tan((180 / _numberOfSides)* Math.PI / 180)) *2))
+                //Area = (a x p)/2, where a is the length of the apothem (calculated in the last line) and p is the perimeter of the polygon (_regPolygonPerimeter).
+                * _regPolygonPerimeter) / 2)
+                //This defines how many decimal places the answer will be rounded to.
+                , 2);
             } 
 
             //Method for calculating the value of the perimeter of a regular polygon
